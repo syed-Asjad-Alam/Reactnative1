@@ -3,199 +3,225 @@ import React from 'react';
 import { Modal, StyleSheet, Text, View ,Button, Pressable} from 'react-native';
 
 
-const MainComp = (props) => {
-  const [playernumber,setplayernumber] = React.useState(1)
-  const [symbol,setsymbol] = React.useState(props.title)
-  const [first,setfirst] = React.useState()
-  const [second,setsecond] = React.useState()
-  const [third,setthird] = React.useState()
-  const [fourth,setfourth] = React.useState()
-  const [fifth,setfifth] = React.useState()
-  const [sixth,setsixth] = React.useState()
-  const [seventh,setseventh] = React.useState()
-  const [eighth,seteighth] = React.useState()
-  const [ninth,setninth] = React.useState()
-
-  const maggi = (numb,props) => {
-    switch(numb) {
-    case 1:
-      if (props == "O"){
-        setfirst("O")
-        break
-      }
-      else if(props == "X"){
-        setfirst("X")
-        break
-    }
-    case 2:
-      if (props == "O"){
-        setsecond("O")
-        break
-      }
-      else if(props == "X"){
-        setsecond("X")
-        break
-    }
-    case 3:
-      if (props == "O"){
-        setthird("O")
-        break
-      }
-      else if(props == "X"){
-        setthird("X")
-        break
-    }
-    case 4:
-      if (props == "O"){
-        setfourth("O")
-        break
-      }
-      else if(props == "X"){
-        setfourth("X")
-        break
-    }
-    case 5:
-      if (props == "O"){
-        setfifth("O")
-        break
-      }
-      else if(props == "X"){
-        setfifth("X")
-        break
-    }
-    case 6:
-      if (props == "O"){
-        setsixth("O")
-        break
-      }
-      else if(props == "X"){
-        setsixth("X")
-        break
-    }
-    case 7:
-      if (props == "O"){
-        setseventh("O")
-        break
-      }
-      else if(props == "X"){
-        setseventh("X")
-        break
-    }
-    case 8:
-      if (props == "O"){
-        seteighth("O")
-        break
-      }
-      else if(props == "X"){
-        seteighth("X")
-        break
-    }
-    case 9:
-      if (props == "O"){
-        setninth("O")
-        break
-      }
-      else if(props == "X"){
-        setninth("X")
-        break
-    }
-  }
 
 
-  }
-  return (
-      <View style={styles.centeredView}>
-        <Modal animationType="none" visible={true}>
-        <View style={styles.centeredView}>
-          <Text>Player {playernumber} turn</Text>
-          <Text>Player {playernumber}'s symbol {symbol} </Text>
-          <View style={styles.centeredView,{flexDirection:'row'}}>
-            <View style={styles.modalView}>
-              <Pressable style={styles.modalView} onPress={() => {
-                maggi(1,props.title)
-                if (playernumber == 1) {
-                setplayernumber(2)
-                  }
-                else if (playernumber == 2) {
-                setplayernumber(1)
-                }
-                
-                if (props.title == "O"){
-                  setsymbol("X")
-                }
-                else if (props.title == "X"){
-                  setsymbol("O")
-                }}}>{first}</Pressable>
-  
-            </View>
-            <View style={styles.modalView}>
-              <Pressable style={styles.modalView} onPress={() => {
-                maggi(2,props.title)}}>{second}</Pressable>
-  
-            </View>
-            <View style={styles.modalView}>
-              <Pressable style={styles.modalView} onPress={() => maggi(3,props.title)}>{third}</Pressable>
-  
-            </View>
-          </View>
-          <View style={styles.centeredView,{flexDirection:'row'}}>
-            <View style={styles.modalView}>
-              <Pressable style={styles.modalView} onPress={() => maggi(4,props.title)}>{fourth}</Pressable>
-  
-            </View>
-            <View style={styles.modalView}>
-              <Pressable style={styles.modalView} onPress={() => maggi(5,props.title)}>{fifth}</Pressable>
-  
-            </View>
-            <View style={styles.modalView}>
-              <Pressable style={styles.modalView} onPress={() => maggi(6,props.title)}>{sixth}</Pressable>
-  
-            </View>
-          </View>
-          <View style={styles.centeredView,{flexDirection:'row'}}>
-            <View style={styles.modalView}>
-              <Pressable style={styles.modalView} onPress={() => maggi(7,props.title)}>{seventh}</Pressable>
-  
-            </View>
-            <View style={styles.modalView}>
-              <Pressable style={styles.modalView} onPress={() => maggi(8,props.title)}>{eighth}</Pressable>
-  
-            </View>
-            <View style={styles.modalView}>
-              <Pressable style={styles.modalView} onPress={() => maggi(9,props.title)}>{ninth}</Pressable>
-  
-            </View>
-          </View>
-        </View>
-          
-          
-        </Modal>
-        
-       
-      </View>
-    );
-
-}
 const App = () => {
-  const [isStarted, setStart] = React.useState(false)
-  const [Playersymbol, setPlayerSymbol] = React.useState()
+  const [drawmodal, setdrawmodal] = React.useState(false)
+  const [winnermodal, setwinnermodal] = React.useState(false)
+
+  const [d1,setd1] = React.useState(false)
+  const [d2,setd2] = React.useState(false)
+  const [d3,setd3] = React.useState(false)
+  const [d4,setd4] = React.useState(false)
+  const [d5,setd5] = React.useState(false)
+  const [d6,setd6] = React.useState(false)
+  const [d7,setd7] = React.useState(false)
+  const [d8,setd8] = React.useState(false)
+  const [d9,setd9] = React.useState(false)
+
+
+  const [playernumber,setplayernumber] = React.useState(1)
+  const [symbol,setsymbol] = React.useState("X")
+  const [b1,setb1] = React.useState()
+  const [b2,setb2] = React.useState()
+  const [b3,setb3] = React.useState()
+  const [b4,setb4] = React.useState()
+  const [b5,setb5] = React.useState()
+  const [b6,setb6] = React.useState()
+  const [b7,setb7] = React.useState()
+  const [b8,setb8] = React.useState()
+  const [b9,setb9] = React.useState()
+
+  const [board,setboard] = React.useState([[1,2,3],[4,5,6],[7,8,9]])
+  const handleChange = (row, column, event) => {
+    let copy = [...board];
+    copy[row][column] = event;
+    setboard(copy);
+
+  }
+  const [count,setcount] = React.useState(0)
+
+  const checkcount = () => count == 8 ? setdrawmodal(true): setdrawmodal(false)
+
+  const checkwinner = () => {
+    
+      if ((board[0][0] == board[0][1]) && (board[0][0] == board[0][2])){
+        setwinnermodal(true)
+      }
+      else if((board[1][0] == board[1][1]) && (board[1][0] == board[1][2])){
+        setwinnermodal(true)
+      }
+      else if((board[2][0] == board[2][1]) && (board[2][0] == board[2][2])){
+        setwinnermodal(true)
+      }
+      else if((board[0][0] == board[1][0]) && (board[0][0] == board[2][0])){
+        setwinnermodal(true)
+      }
+      else if((board[0][1] == board[1][1]) && (board[0][1] == board[2][1])){
+        setwinnermodal(true)
+      }
+      else if((board[0][2] == board[1][2]) && (board[0][2] == board[2][2])){
+        setwinnermodal(true)
+      }
+      else if((board[0][0] == board[1][1]) && (board[0][0] == board[2][2])){
+        setwinnermodal(true)
+      }
+      else if((board[0][2] == board[1][1]) && (board[0][2] == board[2][0])){
+        setwinnermodal(true)
+      }
+       
+
+  }
+
+
   return (
     <View style={styles.centeredView}>
-      <Text>Tic Tac Toe Game</Text>
-      <Text>Select Your Symbol</Text>
-      <View style={{flexDirection:'row',margin:10}}>
-        <View style={{width:100,margin:20}}>
-          {!isStarted && <Button title="O" onPress={() => {
-            setStart(true)
-            setPlayerSymbol("O")}} />}
+      <Modal>
+        <View style={styles.centeredView}>
+          <Text>Player {playernumber}'s turn</Text>
+          <Text>Player {playernumber}'s symbol is {symbol}</Text>
+          <View style={styles.centeredView,{flexDirection:'row'}}>
+            <View style={styles.modalView}>
+                <Pressable style={styles.modalView} disabled={d1} onPress={() => {
+                  symbol == "X" ? setb1("X") :setb1("O")
+                  symbol == "X" ? handleChange(0,0,"X"):handleChange(0,0,"O") 
+                  playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
+                  symbol == "X" ? setsymbol("O"): setsymbol("X")
+                  setd1(true)
+                  setcount(count+1)
+                  checkwinner()
+                  checkcount()
+                }}>{b1}</Pressable>
+            </View>
+            <View style={styles.modalView}>
+                <Pressable style={styles.modalView} disabled={d2} onPress={() => {
+                  symbol == "X" ? setb2("X") :setb2("O")
+                  symbol == "X" ? handleChange(0,1,"X"):handleChange(0,1,"O")
+                  playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
+                  symbol == "X" ? setsymbol("O"): setsymbol("X")
+                  setd2(true)
+                  setcount(count+1)
+                  checkwinner()
+                  checkcount()
+                }}>{b2}</Pressable>
+            </View>
+            <View style={styles.modalView}>
+                <Pressable style={styles.modalView} disabled={d3} onPress={() => {
+                  symbol == "X" ? setb3("X") :setb3("O")
+                  symbol == "X" ? handleChange(0,2,"X"):handleChange(0,2,"O")
+                  playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
+                  symbol == "X" ? setsymbol("O"): setsymbol("X")
+                  setd3(true)
+                  setcount(count+1)
+                  checkwinner()
+                  checkcount()
+                }}>{b3}</Pressable>
+            </View>
+
+          </View>
+          <View style={styles.centeredView,{flexDirection:'row'}}>
+            <View style={styles.modalView}>
+                <Pressable style={styles.modalView} disabled={d4} onPress={() => {
+                  symbol == "X" ? setb4("X") :setb4("O")
+                  symbol == "X" ? handleChange(1,0,"X"):handleChange(1,0,"O")
+                  playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
+                  symbol == "X" ? setsymbol("O"): setsymbol("X")
+                  setd4(true)
+                  setcount(count+1)
+                  checkwinner()
+                  checkcount()
+                }}>{b4}</Pressable>
+            </View>
+            <View style={styles.modalView}>
+                <Pressable style={styles.modalView} disabled={d5} onPress={() => {
+                  symbol == "X" ? setb5("X") :setb5("O")
+                  symbol == "X" ? handleChange(1,1,"X"):handleChange(1,1,"O")
+                  playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
+                  symbol == "X" ? setsymbol("O"): setsymbol("X")
+                  setd5(true)
+                  setcount(count+1)
+                  checkwinner()
+                  checkcount()
+                }}>{b5}</Pressable>
+            </View>
+            <View style={styles.modalView}>
+                <Pressable style={styles.modalView} disabled={d6} onPress={() => {
+                  symbol == "X" ? setb6("X") :setb6("O")
+                  symbol == "X" ? handleChange(1,2,"X"):handleChange(1,2,"O")
+                  playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
+                  symbol == "X" ? setsymbol("O"): setsymbol("X")
+                  setd6(true)
+                  setcount(count+1)
+                  checkwinner()
+                  checkcount()
+                }}>{b6}</Pressable>
+            </View>
+
+          </View>
+          <View style={styles.centeredView,{flexDirection:'row'}}>
+            <View style={styles.modalView}>
+                <Pressable style={styles.modalView} disabled={d7} onPress={() => {
+                  symbol == "X" ? setb7("X") :setb7("O")
+                  symbol == "X" ? handleChange(2,0,"X"):handleChange(2,0,"O") 
+                  playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
+                  symbol == "X" ? setsymbol("O"): setsymbol("X")
+                  setd7(true)
+                  setcount(count+1)
+                  checkwinner()
+                  checkcount()
+                }}>{b7}</Pressable>
+            </View>
+            <View style={styles.modalView}>
+                <Pressable style={styles.modalView} disabled={d8} onPress={() => {
+                  symbol == "X" ? setb8("X") :setb8("O")
+                  symbol == "X" ? handleChange(2,1,"X"):handleChange(2,1,"O") 
+                  playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
+                  symbol == "X" ? setsymbol("O"): setsymbol("X")
+                  setd8(true)
+                  setcount(count+1)
+                  checkwinner()
+                  checkcount()
+                }}>{b8}</Pressable>
+            </View>
+            <View style={styles.modalView}>
+                <Pressable style={styles.modalView} disabled={d9} onPress={() => {
+                  symbol == "X" ? setb9("X") :setb9("O")
+                  symbol == "X" ? handleChange(2,2,"X"):handleChange(2,2,"O") 
+                  playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
+                  symbol == "X" ? setsymbol("O"): setsymbol("X")
+                  setd9(true)
+                  setcount(count+1)
+                  checkwinner()
+                  checkcount()
+                }}>{b9}</Pressable>
+            </View>
+
+          </View>
         </View>
-        <View style={{width:100,margin:20}}>
-          {!isStarted && <Button title="X" onPress={() => {
-            setStart(true)
-            setPlayerSymbol("X")}} />}
+        
+      </Modal>
+      <Modal animationType="slide"
+        transparent={true}
+        visible={drawmodal}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setdrawmodal(!drawmodal);
+        }}>
+          <View style={styles.modalView}>
+          <Text>Draw</Text>
+          </View>
+      </Modal>
+      <Modal animationType="slide"
+        transparent={true}
+        visible={winnermodal}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setwinnermodal(!winnermodal);
+        }}>
+        <View style={styles.modalView}>
+        <Text>Winner</Text>
         </View>
-      </View>
-      {isStarted && <MainComp title={Playersymbol} />}
+      </Modal>
     </View>
   );
 
