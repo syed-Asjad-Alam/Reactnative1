@@ -258,7 +258,7 @@ const App = () => {
         >
           <View style={styles.modalView}>
             <Text>Draw</Text>
-            <Pressable onPress={() => reset()}>Play Again</Pressable>
+            <Pressable onPress={() => reset()}><Text>Play Again</Text></Pressable>
           </View>
       </Modal>
       <Modal animationType="slide"
@@ -267,7 +267,7 @@ const App = () => {
         >
         <View style={styles.modalView}>
         <Text>Player {playernumber} is the winnner</Text>
-        <Pressable onPress={() => reset()}>Play Again</Pressable>
+        <Pressable onPress={() => reset()}><Text>Play Again</Text></Pressable>
         </View>
       </Modal>
     </View>
