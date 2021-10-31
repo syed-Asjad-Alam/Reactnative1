@@ -44,57 +44,101 @@ const App = () => {
   const checkcount = () => count == 8 ? setdrawmodal(true): setdrawmodal(false)
 
   const checkwinner = () => {
+      
     
       if ((board[0][0] == board[0][1]) && (board[0][0] == board[0][2])){
+        playernumber == 1 ? setplayernumber(1):setplayernumber(2)
         setwinnermodal(true)
       }
       else if((board[1][0] == board[1][1]) && (board[1][0] == board[1][2])){
+        playernumber == 1 ? setplayernumber(1):setplayernumber(2)
         setwinnermodal(true)
       }
       else if((board[2][0] == board[2][1]) && (board[2][0] == board[2][2])){
+        playernumber == 1 ? setplayernumber(1):setplayernumber(2)
         setwinnermodal(true)
       }
       else if((board[0][0] == board[1][0]) && (board[0][0] == board[2][0])){
+        playernumber == 1 ? setplayernumber(1):setplayernumber(2)
         setwinnermodal(true)
       }
       else if((board[0][1] == board[1][1]) && (board[0][1] == board[2][1])){
+        playernumber == 1 ? setplayernumber(1):setplayernumber(2)
         setwinnermodal(true)
       }
       else if((board[0][2] == board[1][2]) && (board[0][2] == board[2][2])){
+        playernumber == 1 ? setplayernumber(1):setplayernumber(2)
         setwinnermodal(true)
       }
       else if((board[0][0] == board[1][1]) && (board[0][0] == board[2][2])){
+        playernumber == 1 ? setplayernumber(1):setplayernumber(2)
         setwinnermodal(true)
       }
       else if((board[0][2] == board[1][1]) && (board[0][2] == board[2][0])){
+        playernumber == 1 ? setplayernumber(1):setplayernumber(2)
         setwinnermodal(true)
       }
        
 
   }
 
+  const reset = () => {
+    setdrawmodal(false)
+    setwinnermodal(false)
+
+    setd1(false)
+    setd2(false)
+    setd3(false)
+    setd4(false)
+    setd5(false)
+    setd6(false)
+    setd7(false)
+    setd8(false)
+    setd9(false)
+
+    setplayernumber(1)
+    setsymbol("X")
+
+    setb1()
+    setb2()
+    setb3()
+    setb4()
+    setb5()
+    setb6()
+    setb7()
+    setb8()
+    setb9()
+
+    setcount(0)
+    setboard([[1,2,3],[4,5,6],[7,8,9]])
+
+    
+
+  }
+
 
   return (
     <View style={styles.centeredView}>
-      <Modal>
         <View style={styles.centeredView}>
           <Text>Player {playernumber}'s turn</Text>
           <Text>Player {playernumber}'s symbol is {symbol}</Text>
           <View style={styles.centeredView,{flexDirection:'row'}}>
             <View style={styles.modalView}>
-                <Pressable style={styles.modalView} disabled={d1} onPress={() => {
+                <Pressable style={styles.modalView} disabled={d1} onPressOut={() => {
                   symbol == "X" ? setb1("X") :setb1("O")
-                  symbol == "X" ? handleChange(0,0,"X"):handleChange(0,0,"O") 
+                  symbol == "X" ? handleChange(0,0,"X"):handleChange(0,0,"O")
                   playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
                   symbol == "X" ? setsymbol("O"): setsymbol("X")
                   setd1(true)
                   setcount(count+1)
                   checkwinner()
                   checkcount()
-                }}>{b1}</Pressable>
+            
+                  
+                }}><Text>{b1}</Text></Pressable>
             </View>
             <View style={styles.modalView}>
-                <Pressable style={styles.modalView} disabled={d2} onPress={() => {
+                <Pressable style={styles.modalView} disabled={d2} onPressOut={() => {
                   symbol == "X" ? setb2("X") :setb2("O")
                   symbol == "X" ? handleChange(0,1,"X"):handleChange(0,1,"O")
                   playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
@@ -103,10 +147,11 @@ const App = () => {
                   setcount(count+1)
                   checkwinner()
                   checkcount()
-                }}>{b2}</Pressable>
+                  
+                }}><Text>{b2}</Text></Pressable>
             </View>
             <View style={styles.modalView}>
-                <Pressable style={styles.modalView} disabled={d3} onPress={() => {
+                <Pressable style={styles.modalView} disabled={d3} onPressOut={() => {
                   symbol == "X" ? setb3("X") :setb3("O")
                   symbol == "X" ? handleChange(0,2,"X"):handleChange(0,2,"O")
                   playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
@@ -115,13 +160,14 @@ const App = () => {
                   setcount(count+1)
                   checkwinner()
                   checkcount()
-                }}>{b3}</Pressable>
+                  
+                }}><Text>{b3}</Text></Pressable>
             </View>
 
           </View>
           <View style={styles.centeredView,{flexDirection:'row'}}>
             <View style={styles.modalView}>
-                <Pressable style={styles.modalView} disabled={d4} onPress={() => {
+                <Pressable style={styles.modalView} disabled={d4} onPressOut={() => {
                   symbol == "X" ? setb4("X") :setb4("O")
                   symbol == "X" ? handleChange(1,0,"X"):handleChange(1,0,"O")
                   playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
@@ -130,10 +176,11 @@ const App = () => {
                   setcount(count+1)
                   checkwinner()
                   checkcount()
-                }}>{b4}</Pressable>
+                  
+                }}><Text>{b4}</Text></Pressable>
             </View>
             <View style={styles.modalView}>
-                <Pressable style={styles.modalView} disabled={d5} onPress={() => {
+                <Pressable style={styles.modalView} disabled={d5} onPressOut={() => {
                   symbol == "X" ? setb5("X") :setb5("O")
                   symbol == "X" ? handleChange(1,1,"X"):handleChange(1,1,"O")
                   playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
@@ -142,10 +189,11 @@ const App = () => {
                   setcount(count+1)
                   checkwinner()
                   checkcount()
-                }}>{b5}</Pressable>
+                  
+                }}><Text>{b5}</Text></Pressable>
             </View>
             <View style={styles.modalView}>
-                <Pressable style={styles.modalView} disabled={d6} onPress={() => {
+                <Pressable style={styles.modalView} disabled={d6} onPressOut={() => {
                   symbol == "X" ? setb6("X") :setb6("O")
                   symbol == "X" ? handleChange(1,2,"X"):handleChange(1,2,"O")
                   playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
@@ -154,72 +202,72 @@ const App = () => {
                   setcount(count+1)
                   checkwinner()
                   checkcount()
-                }}>{b6}</Pressable>
+                  
+                }}><Text>{b6}</Text></Pressable>
             </View>
 
           </View>
           <View style={styles.centeredView,{flexDirection:'row'}}>
             <View style={styles.modalView}>
-                <Pressable style={styles.modalView} disabled={d7} onPress={() => {
+                <Pressable style={styles.modalView} disabled={d7} onPressOut={() => {
                   symbol == "X" ? setb7("X") :setb7("O")
-                  symbol == "X" ? handleChange(2,0,"X"):handleChange(2,0,"O") 
+                  symbol == "X" ? handleChange(2,0,"X"):handleChange(2,0,"O")
                   playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
                   symbol == "X" ? setsymbol("O"): setsymbol("X")
                   setd7(true)
                   setcount(count+1)
                   checkwinner()
                   checkcount()
-                }}>{b7}</Pressable>
+                  
+                }}><Text>{b7}</Text></Pressable>
             </View>
             <View style={styles.modalView}>
-                <Pressable style={styles.modalView} disabled={d8} onPress={() => {
+                <Pressable style={styles.modalView} disabled={d8} onPressOut={() => {
                   symbol == "X" ? setb8("X") :setb8("O")
-                  symbol == "X" ? handleChange(2,1,"X"):handleChange(2,1,"O") 
+                  symbol == "X" ? handleChange(2,1,"X"):handleChange(2,1,"O")
                   playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
-                  symbol == "X" ? setsymbol("O"): setsymbol("X")
+                  symbol == "X" ? setsymbol("O"): setsymbol("X") 
                   setd8(true)
                   setcount(count+1)
                   checkwinner()
                   checkcount()
-                }}>{b8}</Pressable>
+                  
+                }}><Text>{b8}</Text></Pressable>
             </View>
             <View style={styles.modalView}>
-                <Pressable style={styles.modalView} disabled={d9} onPress={() => {
+                <Pressable style={styles.modalView} disabled={d9} onPressOut={() => {
                   symbol == "X" ? setb9("X") :setb9("O")
-                  symbol == "X" ? handleChange(2,2,"X"):handleChange(2,2,"O") 
+                  symbol == "X" ? handleChange(2,2,"X"):handleChange(2,2,"O")
                   playernumber == 1 ? setplayernumber(2) : setplayernumber(1)
-                  symbol == "X" ? setsymbol("O"): setsymbol("X")
+                  symbol == "X" ? setsymbol("O"): setsymbol("X") 
                   setd9(true)
                   setcount(count+1)
                   checkwinner()
                   checkcount()
-                }}>{b9}</Pressable>
+                  
+                }}><Text>{b9}</Text></Pressable>
             </View>
 
           </View>
         </View>
         
-      </Modal>
+
       <Modal animationType="slide"
         transparent={true}
         visible={drawmodal}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-          setdrawmodal(!drawmodal);
-        }}>
+        >
           <View style={styles.modalView}>
-          <Text>Draw</Text>
+            <Text>Draw</Text>
+            <Pressable onPress={() => reset()}>Play Again</Pressable>
           </View>
       </Modal>
       <Modal animationType="slide"
         transparent={true}
         visible={winnermodal}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-          setwinnermodal(!winnermodal);
-        }}>
+        >
         <View style={styles.modalView}>
-        <Text>Winner</Text>
+        <Text>Player {playernumber} is the winnner</Text>
+        <Pressable onPress={() => reset()}>Play Again</Pressable>
         </View>
       </Modal>
     </View>
@@ -235,10 +283,12 @@ const styles = StyleSheet.create({
     marginTop: 22
   },
   modalView: {
-    margin: 20,
+    margin: 10,
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 35,
+    padding: 15,
+    fontSize:10,
+    fontWeight:'bold',
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
